@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="css/style.css">
   
 </head>
-<body class="font-kumbh-sans min-h-max">
+<body class="font-kumbh-sans">
   <!-- Background overlay for dynamic content -->
-  <div class="bg-gray-800 bg-opacity-50 absolute min-h-screen hidden z-40" id="dynamic-content"></div>
+  <div class="bg-gray-800 bg-opacity-50 absolute min-h-full h-full hidden z-40" id="dynamic-content"></div>
 
   <!-- Empty Cart Modal -->
   <div class="max-w-full relative z-30 mx-2 hidden" id="empty-cart">
@@ -75,7 +75,7 @@
         </div>
       </div>
     </section>
-    <section class="min-h-full absolute top-0 p-5 w-60 bg-white hidden z-50 left-0" id="navbar">
+    <section class="min-h-full absolute top-0 pt-10 p-5 w-60 bg-white hidden z-50 left-0 flex-col h-full" id="navbar">
       <button id="close-hamburger">
         <img src="images/icon-close.svg" class="mb-12" alt="Close" aria-label="Close">
       </button>

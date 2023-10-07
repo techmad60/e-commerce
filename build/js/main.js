@@ -141,12 +141,14 @@ showImage(currentIndex);
 // Function to open the sidebar
 function openSidebar() {
   displayNavbar.classList.remove('hidden');
+  displayNavbar.classList.add('flex');
   overlay.classList.remove('hidden');
 }
 
 // Function to close the sidebar
 function closeSidebar() {
   displayNavbar.classList.add('hidden');
+  displayNavbar.classList.remove('flex');
   overlay.classList.add('hidden');
 }
 

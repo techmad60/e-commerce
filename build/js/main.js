@@ -143,6 +143,7 @@ function openSidebar() {
   displayNavbar.classList.remove('hidden');
   displayNavbar.classList.add('flex');
   overlay.classList.remove('hidden');
+  overlay.classList.add('block');
 }
 
 // Function to close the sidebar
@@ -150,6 +151,7 @@ function closeSidebar() {
   displayNavbar.classList.add('hidden');
   displayNavbar.classList.remove('flex');
   overlay.classList.add('hidden');
+  overlay.classList.remove('block');
 }
 
 // Event listener for opening the sidebar

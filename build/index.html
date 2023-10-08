@@ -12,7 +12,7 @@
 </head>
 <body class="font-kumbh-sans">
   <!-- Background overlay for dynamic content -->
-  <div class="bg-gray-800 bg-opacity-50 absolute min-h-full h-full hidden z-40" id="dynamic-content"></div>
+  <div class="bg-gray-800 bg-opacity-50 absolute min-h-screen hidden z-40" id="dynamic-content"></div>
 
   <!-- Empty Cart Modal -->
   <div class="max-w-full relative z-30 mx-2 hidden" id="empty-cart">
@@ -75,7 +75,7 @@
         </div>
       </div>
     </section>
-    <section class="min-h-full absolute top-0 pt-10 p-5 w-60 bg-white hidden z-50 left-0 flex-col h-full" id="navbar">
+    <section class="absolute top-0 pt-10 p-5 w-60 bg-white hidden z-50 left-0 flex-col h-full" id="navbar">
       <button id="close-hamburger">
         <img src="images/icon-close.svg" class="mb-12" alt="Close" aria-label="Close">
       </button>
@@ -101,7 +101,7 @@
     </section>
   </header>
 
-  <main>
+  <main class="h-full">
     <div class="flex flex-col relative">
       <div class="flex overflow-x-scroll">
         <img src="images/image-product-1.jpg" class="" alt="Product Image">

@@ -23,6 +23,7 @@ const numberPopup = document.querySelector("#number-popup");
 const addToCartButton = document.querySelector("#Add-cart");
 const deleteItemBtn = document.querySelector("#deleteitem-btn");
 const overlay = document.querySelector('#dynamic-content');
+const body = document.querySelector('body')
 
 // Event listener for the "Delete Item" button
 deleteItemBtn.addEventListener("click", () => {
@@ -144,14 +145,16 @@ function openSidebar() {
   displayNavbar.classList.add('flex');
   overlay.classList.remove('hidden');
   overlay.classList.add('block');
+  body.classList.add('overflow-hidden');
 }
-
+console.log(body);
 // Function to close the sidebar
 function closeSidebar() {
   displayNavbar.classList.add('hidden');
   displayNavbar.classList.remove('flex');
   overlay.classList.add('hidden');
   overlay.classList.remove('block');
+  body.classList.remove('overflow-hidden');
 }
 
 // Event listener for opening the sidebar

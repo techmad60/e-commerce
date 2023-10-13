@@ -8,92 +8,129 @@
   
   <title>Frontend Mentor | E-commerce product page</title>
   <link rel="stylesheet" href="css/style.css">
-  
+   
 </head>
-<body class="font-kumbh-sans">
+<body class="font-kumbh-sans min-h-screen">
   <!-- Background overlay for dynamic content -->
-  <div class="bg-gray-800 bg-opacity-50 absolute min-h-screen hidden z-40" id="dynamic-content"></div>
+  <div class="bg-black bg-opacity-80 absolute min-h-full hidden z-40" id="dynamic-content"></div>
 
-  <!-- Empty Cart Modal -->
-  <div class="max-w-full relative z-30 mx-2 hidden" id="empty-cart">
-    <div class="absolute bg-white w-full h-72 top-16 rounded-md mt-4 shadow-lg">
-      <div class="flex justify-between items-center p-6">
-        <h3 class="font-bold">Cart</h3>
-        <button id="close-emptycart">
-          <img src="images/icon-close.svg" alt="Close" aria-label="Close">
+  <div class="relative min-h-full">
+    <div id="lightbox" class="rounded-md place-content-center absolute z-50 w-full top-12 hidden">
+      <div class="flex flex-col ">
+        <button id="close-lightbox" class="ml-auto my-5">
+          <img src="images/icon-close light.svg" alt="Close" aria-label="Close">
         </button>
-      </div>
-      <hr>
-      <p class="flex justify-center items-center h-56 text-xl">Your cart is empty.</p>
-    </div>
-  </div>
-
-  <!-- Full Cart Modal -->
-  <div class="max-w-full relative z-30 mx-2 hidden" id="full-cart">
-    <div class="absolute bg-white w-full h-72 top-16 rounded-md mt-4 shadow-lg">
-      <div class="flex justify-between items-center p-6">
-        <h3 class="font-bold">Cart</h3>
-        <button id="close-fullcart">
-          <img src="images/icon-close.svg" alt="Close" aria-label="Close">
-        </button>
-      </div>
-      <hr>
-      <div class="flex p-6 justify-between items-center">
-        <img src="images/image-product-1-thumbnail.jpg" alt="Product Image" class="w-16 rounded-lg">
-        <div>
-          <p class="text-gray-500">Fall Limited Edition Sneakers</p>
-          <p class="text-gray-500">$125.00 x <span id="number-bought">1</span> <span>= </span><span class="font-bold text-black" id="total-amount">$125.00</span></p>
-        </div>
-        <button id="deleteitem-btn">
-          <img src="images/icon-delete.svg" alt="Delete" aria-label="Delete">
-        </button>
-      </div>
-      <button class="bg-orange-500 flex justify-center p-4 text-white font-bold rounded-lg items-center self-center mx-auto w-80 text-center mt-2">
-        Checkout
-      </button>
-    </div>
-  </div>
-
-  <header>
-    <section>
-      <div class="flex justify-between p-5">
-        <div class="flex items-center justify-evenly space-x-4">
-          <button id="hamburger-btn">
-            <img src="images/icon-menu.svg" alt="Menu" aria-label="Menu">
-          </button>
-          <img src="images/logo.svg" alt="Logo" aria-label="Logo">
-        </div>
-        <div class="flex items-center justify-evenly space-x-4 relative">
-          <!-- Number Pop-up for Cart -->
-          <div id="number-popup" class="bg-orange-500 px-2 rounded-full text-white absolute bottom-3 hidden">
-            1
+        <div class="relative">
+          <div class="lightbox-images flex bg-none">
+            <img src="images/image-product-1.jpg" alt="Product Image" class="w-screen lg:w-96 lg:rounded-xl">
+            <img src="images/image-product-2.jpg" alt="Product Image" class="w-screen hidden lg:w-96 lg:rounded-xl">
+            <img src="images/image-product-3.jpg" alt="Product Image" class="w-screen hidden lg:w-96 lg:rounded-xl">
+            <img src="images/image-product-4.jpg" alt="Product Image" class="w-screen hidden lg:w-96 lg:rounded-xl">
           </div>
-          <button id="open-cart" aria-label="Open Cart">
-            <img src="images/icon-cart dark.svg" alt="Cart" class="w-6" aria-label="Cart">
-          </button>
-          <img src="images/image-avatar.png" alt="User Avatar" class="w-8" aria-label="User Avatar">
+          <div class="flex justify-between items-center absolute inset-0">
+            <button id="lightbox-prevbtn" class="bg-white w-16 h-16 rounded-full flex items-center justify-center -ml-8" aria-label="Previous Image">
+              <img src="images/icon-previous.svg" alt="Previous" aria-label="Previous">
+            </button>
+            <button id="lightbox-nextbtn" class="bg-white w-16 h-16 rounded-full flex items-center justify-center -mr-8" aria-label="Next Image">
+              <img src="images/icon-next.svg" alt="Next" aria-label="Next">
+            </button>
+          </div>
         </div>
+        
+
+        <div class="hidden lg:block mt-5">
+          <div class="lightbox-thumbnail flex p-1 space-x-5 justify-center">
+            <button class="bg-white rounded-xl w-16">
+              <img src="images/image-product-1-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image rounded-xl">
+            </button>
+            <button class="bg-white rounded-xl w-16">
+              <img src="images/image-product-2-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image rounded-xl">
+            </button>
+            <button class="bg-white rounded-xl w-16">
+              <img src="images/image-product-3-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image rounded-xl">
+            </button>
+            <button class="bg-white rounded-xl w-16">
+              <img src="images/image-product-4-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image rounded-xl">
+            </button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="max-w-full relative z-30 mx-2  md:w-96 md:mx-auto lg:mr-16 hidden" id="cart-modal">
+    <div class="absolute bg-white w-full h-72 top-16 rounded-md mt-4 shadow-lg lg:shadow-xl">
+      <div class="flex justify-between items-center p-6">
+        <h3 class="font-bold">Cart</h3>
+        <button id="close-modal">
+          <img src="images/icon-close.svg" alt="Close" aria-label="Close">
+        </button>
+      </div>
+      <hr>
+       <!-- Empty Cart Modal -->
+      <div id="empty-cart">
+        <p class="flex justify-center items-center h-56 text-xl" >Your cart is empty.</p>
+      </div>
+      
+       <!-- Full Cart Modal -->
+      <div id="full-cart">
+        <div class="flex p-6 justify-between items-center" >
+          <img src="images/image-product-1-thumbnail.jpg" alt="Product Image" class="w-16 rounded-lg">
+          <div>
+            <p class="text-gray-500">Fall Limited Edition Sneakers</p>
+            <p class="text-gray-500">$125.00 x <span id="number-bought">1</span> <span>= </span><span class="font-bold text-black" id="total-amount">$125.00</span></p>
+          </div>
+          <button id="deleteitem-btn">
+            <img src="images/icon-delete.svg" alt="Delete" aria-label="Delete">
+          </button>
+        </div>
+       <button class="bg-orange-500 flex justify-center p-4 text-white font-bold rounded-lg items-center self-center mx-auto w-80 text-center mt-2" id="checkout-items">
+        Checkout
+       </button>
+      </div>
+    </div>
+  </div>
+  
+
+  <header class="flex justify-between items-center p-5 lg:justify-start lg:border-b-slate-200 lg:border-2 xl:grid place-content-start grid-cols-3 place-items-center">
+    <section class="flex justify-evenly md:order-1">
+      <div class="flex items-center justify-evenly space-x-4">
+        <button id="hamburger-btn" class="md:hidden">
+          <img src="images/icon-menu.svg" alt="Menu" aria-label="Menu">
+        </button>
+        <img src="images/logo.svg" alt="Logo" aria-label="Logo">
       </div>
     </section>
-    <section class="absolute top-0 pt-10 p-5 w-60 bg-white hidden z-50 left-0 flex-col h-full" id="navbar">
+    <section class="md:order-3 ml-auto">
+      <div class="flex items-center justify-evenly space-x-4 relative">
+        <!-- Number Pop-up for Cart -->
+        <div id="number-popup" class="bg-orange-500 px-2 rounded-full text-white absolute bottom-3 hidden">
+          1
+        </div>
+        <button id="open-cart" aria-label="Open Cart">
+          <img src="images/icon-cart dark.svg" alt="Cart" class="w-6 lg:w-8" aria-label="Cart">
+        </button>
+        <img src="images/image-avatar.png" alt="User Avatar" class="w-8 cursor-pointer hover:border-orange-400 border-2 rounded-full lg:w-12" aria-label="User Avatar">
+      </div>
+    </section>
+    <section class="absolute top-0 pt-10 p-5 w-60 bg-white hidden z-50 left-0 flex-col h-full md:h-auto md:block md:static md:p-2 md:mx-auto md:pt-0 md:order-2 md:w-fit md:z-0 md:leading-none lg:mx-0 lg:ml-12 lg:z-0" id="navbar">
       <button id="close-hamburger">
-        <img src="images/icon-close.svg" class="mb-12" alt="Close" aria-label="Close">
+        <img src="images/icon-close.svg" class="mb-12 md:hidden" alt="Close" aria-label="Close">
       </button>
       <nav id="nav-bar" aria-label="Main Navigation">
-        <ul class="leading-9 font-extrabold">
-          <li>
+        <ul class="leading-9 md:leading-none font-extrabold md:flex md:space-x-6 md:text-md lg:text-slate-500 lg:font-thin ">
+          <li class="md:hover:border-b-2 md:border-orange-500 py-3 lg:hover:text-black">
             <a href="#">Collections</a>
           </li>
-          <li>
+          <li class="md:hover:border-b-2 md:border-orange-500 py-3 lg:hover:text-black">
             <a href="#">Men</a>
           </li>
-          <li>
+          <li class="md:hover:border-b-2 md:border-orange-500 py-3 lg:hover:text-black">
             <a href="#">Women</a>
           </li>
-          <li>
+          <li class="md:hover:border-b-2 md:border-orange-500 py-3 lg:hover:text-black">
             <a href="#">About</a>
           </li>
-          <li>
+          <li class="md:hover:border-b-2 md:border-orange-500 py-3 lg:hover:text-black">
             <a href="#">Contact</a>
           </li>
         </ul>
@@ -101,14 +138,15 @@
     </section>
   </header>
 
-  <main class="h-full">
-    <div class="flex flex-col relative">
-      <div class="flex overflow-x-scroll">
-        <img src="images/image-product-1.jpg" class="" alt="Product Image">
-        <img src="images/image-product-2.jpg" alt="Product Image" class="w-screen">
-        <img src="images/image-product-3.jpg" alt="Product Image" class="">
+  <main class="h-full lg:grid grid-cols-2 place-items-center place-content-center gap-14 lg:mt-16 xl:gap-0">
+    <div class="flex flex-col relative cursor-pointer">
+      <div class="main-images flex">
+        <img src="images/image-product-1.jpg" alt="Product Image" class="w-screen lg:w-96 lg:rounded-xl ">
+        <img src="images/image-product-2.jpg" alt="Product Image" class="w-screen lg:w-96 lg:rounded-xl">
+        <img src="images/image-product-3.jpg" alt="Product Image" class="w-screen lg:w-96 lg:rounded-xl">
+        <img src="images/image-product-4.jpg" alt="Product Image" class="w-screen lg:w-96 lg:rounded-xl">
       </div>
-      <div class="flex justify-between items-center absolute inset-0">
+      <div class="flex justify-between items-center absolute inset-0 lg:hidden">
         <button id="prev-button" class="bg-white w-16 h-16 m-2 rounded-full flex items-center justify-center" aria-label="Previous Image">
           <img src="images/icon-previous.svg" alt="Previous" aria-label="Previous">
         </button>
@@ -116,39 +154,52 @@
           <img src="images/icon-next.svg" alt="Next" aria-label="Next">
         </button>
       </div>
+      <div class="hidden lg:block mt-10">
+        <div class="thumbnail-images flex justify-between p-1 space-x-5">
+          <img src="images/image-product-1-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image w-20 rounded-xl opacity-95 active-img
+          hover:opacity-40">
+          <img src="images/image-product-2-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image w-20 rounded-xl opacity-95 hover:opacity-40">
+          <img src="images/image-product-3-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image w-20 rounded-xl opacity-95 hover:opacity-40">
+          <img src="images/image-product-4-thumbnail.jpg" alt="Product Image thumbnail" class="thumbnail-image w-20 rounded-xl opacity-95 hover:opacity-40">
+        </div>
+      </div>
     </div>
-    <section class="p-5">
-      <article>
-        <p class="text-orange-500 text-sm font-bold">SNEAKER COMPANY</p>
-        <h2 class="font-extrabold text-3xl py-4">Fall Limited Edition Sneakers</h2>
-        <p class="text-gray-500">
-          These low-profile sneakers are your perfect casual wear companion. Featuring a 
-          durable rubber outer sole, they’ll withstand everything the weather can offer.
-        </p>
-      </article>
-    </section>
-    <section class="px-5 mt-2 mb-20">
-      <div class="flex justify-between">
-        <div class="flex items-center">
-          <p class="font-extrabold text-3xl">$125.00</p>
-          <p class="bg-rose-100 text-orange-500 px-1 rounded-sm font-extrabold ml-3">50%</p>
+    
+    <div class="mt-20">
+      <section class="p-5 md:text-center lg:text-start xl:pr-20">
+        <article>
+          <p class="text-orange-500 text-sm md:text-3xl font-bold lg:text-sm tracking-widest">SNEAKER COMPANY</p>
+          <h2 class="font-extrabold text-3xl py-4 md:text-4xl md:py-5 lg:text-4xl lg:py-4">Fall Limited Edition Sneakers</h2>
+          <p class="text-gray-500 md:px-14 md:py-5 lg:px-0 lg:py-0">
+            These low-profile sneakers are your perfect casual wear companion. Featuring a 
+            durable rubber outer sole, they’ll withstand everything the weather can offer.
+          </p>
+        </article>
+      </section>
+      <section class="px-5 mt-2 mb-20 md:px-14 md:mt-7 lg:px-5 lg:mt-2">
+        <div class="flex justify-between lg:flex-col">
+          <div class="flex items-center">
+            <p class="font-extrabold text-3xl">$125.00</p>
+            <p class="bg-rose-100 text-orange-500 px-1 rounded-sm font-extrabold ml-3">50%</p>
+          </div>
+          <div>
+            <p class="line-through text-gray-400 font-extrabold">$250.00</p>
+          </div>
         </div>
-        <div>
-          <p class="line-through text-gray-400 font-extrabold">$250.00</p>
+        <div class="lg:flex lg:w-full items-baseline">
+          <div class="flex justify-between bg-slate-100 p-4 mt-6 mb-4 rounded-lg items-center lg:w-40">
+            <button class="font-extrabold text-3xl text-orange-500" id="decrement-number" aria-label="Decrease Quantity">-</button>
+            <p class="font-extrabold text-xl" id="number" aria-label="Quantity">0</p>
+            <button class="font-extrabold text-3xl text-orange-500" id="increment-number" aria-label="Increase Quantity">+</button>
+          </div>
+          <div class="bg-orange-500 flex justify-center p-3 rounded-lg items-center shadow shadow-orange-500 lg:h-16 lg:w-56 lg:ml-4">
+            <img src="images/icon-cart.svg" alt="Add to Cart" class="px-3 py-1">
+            <button class="bg-orange-500 flex justify-center text-white font-bold rounded-lg text-center mt-2 " id="Add-cart" aria-label="Add to Cart">Add to cart</button>
+          </div>
         </div>
-      </div>
-      <div class="flex justify-between bg-slate-100 p-4 mt-6 mb-4 rounded-lg">
-        <button class="font-extrabold text-3xl text-orange-500" id="decrement-number" aria-label="Decrease Quantity">-</button>
-        <p class="font-extrabold text-xl" id="number" aria-label="Quantity">0</p>
-        <button class="font-extrabold text-3xl text-orange-500" id="increment-number" aria-label="Increase Quantity">+</button>
-      </div>
-      <div class="bg-orange-500 flex justify-center p-4 rounded-lg items-center shadow shadow-orange-500">
-        <img src="images/icon-cart.svg" alt="Add to Cart" class="px-3 py-1">
-        <button class="bg-orange-500 flex justify-center text-white font-bold rounded-lg text-center mt-2 " id="Add-cart" aria-label="Add to Cart">Add to cart</button>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
-
   <script src="js/main.js"></script>
 </body>
 </html>

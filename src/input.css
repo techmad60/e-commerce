@@ -5,4 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.active-img {
+    border: 2px solid rgb(255, 98, 0);
+    opacity: 0.5;
+};
 
